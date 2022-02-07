@@ -18,14 +18,8 @@ function update_config() {
   jq '.managedRespawn = $newVal' --arg newVal 'true' /greengrass/config/config.json > /tmp/tmp.json && mv /tmp/tmp.json /greengrass/config/config.json
 }
 
-function start_ota() {
-  ./greengrass/ota/ota_agent/ggc-ota
-}
-
 echo "====COPYING SCRIPTS===="
 check_root_user
 copy_scripts
 echo "====UPDATING CONFIG===="
 update_config
-echo "====STARTING OTA===="
-start_ota
